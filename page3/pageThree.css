@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Figtree', sans-serif;
+    height: 100vh;
+    display: flex;
+    margin-top: 100px;
+    margin-left: 20%;
+    justify-content: left;
+    align-items: left;
+    background: linear-gradient(180deg, #1b4b7a, #197763);
+    position: left;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+    width: 100%;
+    max-width: 1440px;
+    padding: 20px;
+}
+
+.content h2 {
+    color: white;
+    font-size: 80px;
+    margin-bottom: 30px;
+}
+
+.signup-form {
+    margin-left: 0%;
+    
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 420px;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.signup-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+.signup-form .input-group input {
+    width: 48%;
+}
+
+.signup-form button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup-form button:hover {
+    background-color: #197763;
+}
+
+.nyu-logo {
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    width: 500px;  /* Increased size */
+    opacity: 0.6;
+}
