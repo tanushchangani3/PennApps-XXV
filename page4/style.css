@@ -1,3 +1,15 @@
+#page-transition {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #003366; /* Color for transition */
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
 * {
     margin: 0;
     padding: 0;
