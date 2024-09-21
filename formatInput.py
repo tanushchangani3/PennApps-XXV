@@ -10,7 +10,6 @@ formatted_data = []
 # Iterate over each profile and transform the data
 for profile in profiles:
     user_content = {
-        "profile_id": profile.get("profile_id"),
         "first_name": profile.get("first_name"),
         "last_name": profile.get("last_name"),
         "sub_title": profile.get("sub_title"),
@@ -20,8 +19,6 @@ for profile in profiles:
         "current_company_position": profile.get("current_company_position"),
         "skills": profile.get("skills"),
         "education": profile.get("education"),
-        "certifications": profile.get("certifications"),
-        "projects": profile.get("projects"),
         "position_groups": profile.get("position_groups"),
     }
     
