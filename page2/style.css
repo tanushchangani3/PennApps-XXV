@@ -1,15 +1,3 @@
-#page-transition {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #003366; /* Color for transition */
-    z-index: 1000;
-    opacity: 1;
-    transition: opacity 0.5s ease;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +6,7 @@
 
 body {
     font-family: "Figtree", sans-serif;
-    background: linear-gradient(135deg, #003366, #47a6a8);
+    background: linear-gradient(180deg, #003366, #47a6a8);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -26,53 +14,6 @@ body {
     color: white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
-
-/* Block transition container */
-#block-transition {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    display: flex;
-}
-
-/* Each block starts completely off-screen to the left */
-.block {
-    flex: 1;
-    background-color: #f39c12; /* Complementary color */
-    height: 100%;
-    transform: translateX(-100vw); /* Start position: fully off-screen */
-    transition: transform 0.8s ease-in-out, opacity 0.5s ease;  /* Move into view with a swipe animation */
-}
-
-/* Staggered delays for each block */
-.block:nth-child(1) {
-    transition-delay: 0.1s;
-}
-
-.block:nth-child(2) {
-    transition-delay: 0.2s;
-}
-
-.block:nth-child(3) {
-    transition-delay: 0.3s;
-}
-
-.block:nth-child(4) {
-    transition-delay: 0.4s;
-}
-
-.block:nth-child(5) {
-    transition-delay: 0.5s;
-}
-
-/* Ensure blocks will fade out after the animation */
-.block {
-    transition: transform 0.8s ease-in-out, opacity 0.5s ease;
-}
-
 
 .container {
     display: flex;

@@ -10,17 +10,26 @@
     <div class="container">
         <div class="content">
             <h2>Fostering alumni<br>connections.</h2>
-            <form class="signup-form">
+            <form class="signup-form" onsubmit="return false;"> <!-- Prevent form submission -->
                 <div class="input-group">
                     <input type="text" placeholder="First Name">
                     <input type="text" placeholder="Last Name">
                 </div>
                 <input type="email" placeholder="School Email Address">
                 <input type="password" placeholder="Password">
-                <button type="submit">SIGN UP</button>
+                <!-- Pass the event object explicitly to goToThirdPage -->
+                <button type="button" onclick="goToThirdPage(event)">SIGN UP</button> <!-- Changed here -->
             </form>
         </div>
-        <img src="/Users/sutharsikakumar/Desktop/nyu.png" alt="NYU Logo" class="nyu-logo">
+        <img src="/Pictures/nyu.png" alt="NYU Logo" class="nyu-logo">
     </div>
+
+    <script>
+        function goToThirdPage(event) {
+            event.preventDefault(); // Prevent the default form submission
+            console.log("Navigating to page 4...");
+            window.location.href = '../page4/page4.html'; // Navigate to the third page
+        }
+    </script>
 </body>
 </html>
