@@ -21,7 +21,8 @@ for profile in profiles:
         "skills": profile.get("skills"),
         "education": profile.get("education"),
         "certifications": profile.get("certifications"),
-        "projects": profile.get("projects")
+        "projects": profile.get("projects"),
+        "position_groups": profile.get("position_groups"),
     }
     
     # Create the formatted message
