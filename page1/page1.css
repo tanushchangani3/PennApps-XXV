@@ -1,0 +1,117 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+body {
+    background-color: black;
+    font-family: 'Figtree', sans-serif;
+    background: linear-gradient(180deg, #1b4b7a, #197763);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Container */
+.container {
+    width: 80%;
+    max-width: 1440px;
+    text-align: center;
+}
+
+/* Navbar */
+.navbar {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.logo {
+    font-size: 36px;
+    font-weight: 600;
+    color: white;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.profile-icon {
+    width: 25px;
+}
+
+/* Main content */
+.content h2 {
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.subheading {
+    font-size: 24px;
+    color: linear-gradient(180deg, #1b4b7a, #197763);
+    margin-bottom: 20px;
+}
+
+.university-input {
+    padding: 15px;
+    width: 100%;
+    max-width: 420px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    text-align: center;
+    color: gray;
+    margin-bottom: 20px;
+}
+
+/* Divider */
+.divider {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    width: 80%;
+    margin: 40px auto;
+}
+
+/* Logos */
+.logos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.university-logo {
+    width: 200px; /* Adjusted size to match proportion */
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .content h2 {
+        font-size: 60px;
+    }
+
+    .university-input {
+        max-width: 200%;
+    }
+
+    .university-logo {
+        width: 200px;
+    }
+}
