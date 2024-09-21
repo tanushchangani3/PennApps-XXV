@@ -1,45 +1,7 @@
 import json
+import textwrap
 
-# Load the JSON file
-with open('trainingData.json', 'r') as f:
-    profiles = json.load(f)
-
-# Initialize an empty list to store the new format
-formatted_data = []
-
-# Iterate over each profile and transform the data
-for profile in profiles:
-    user_content = {
-        "first_name": profile.get("first_name"),
-        "last_name": profile.get("last_name"),
-        "sub_title": profile.get("sub_title"),
-        "location": profile.get("location"),
-        "industry": profile.get("industry"),
-        "current_company_name": profile.get("current_company_name"),
-        "current_company_position": profile.get("current_company_position"),
-        "skills": profile.get("skills"),
-        "education": profile.get("education"),
-        "position_groups": profile.get("position_groups"),
-    }
-    
-    # Create the formatted message
-    formatted_message = {
-        "messages": [
-            {
-                "role": "system",
-                "content": (
-                    "You are specializing in professional communication, tasked with composing a networking-focused cold email "
-                    "from a student, Pranjay. Given the data from the professional and the student's resume, "
-                    "your mission is to land a coffee chat. Make the networking email personalized to the receiver’s work experience, "
-                    "preferences, and interests provided by the data. The text must sound authentic and human. Keep the email short, "
-                    "100 to 200 words is ideal."
-                )
-            },
-            {
-                "role": "user",
-                "content": "Professional LinkedIn Data" + json.dumps(user_content, indent=4) + "\n Student Resume Data: " + """
-                1
-
+resume = resume_data = textwrap.dedent("\n Student Resume Data: " + """
 PRANJAY KUMAR | pranjay.kumar@stern.nyu.edu | New York, NY | (908) 380-6875
 EDUCATION
 New York University, Leonard N. Stern School of Business, New York, NY
@@ -85,7 +47,45 @@ SKILLS & INTERESTS
 Skills: Powerpoint, Excel, SQL, Java, Python, C++, Tableau, PowerBi, Power Query, Power Automate, Quickbooks, CapIQ
 Interests: Flash Fiction, Slam Poetry, Weightlifting, Financial Literacy Education, Empathy-Driven Chatbots, Running
 Certifications: Alteryx Designer Core
-                """
+                """)
+# Load the JSON file
+with open('trainingData.json', 'r', encoding='utf-8') as f:
+    profiles = json.load(f)
+
+# Initialize an empty list to store the new format
+formatted_data = []
+
+# Iterate over each profile and transform the data
+for profile in profiles:
+    user_content = {
+        "first_name": profile.get("first_name"),
+        "last_name": profile.get("last_name"),
+        "sub_title": profile.get("sub_title"),
+        "location": profile.get("location"),
+        "industry": profile.get("industry"),
+        "current_company_name": profile.get("current_company_name"),
+        "current_company_position": profile.get("current_company_position"),
+        "skills": profile.get("skills"),
+        "education": profile.get("education"),
+        "position_groups": profile.get("position_groups"),
+    }
+    
+    # Create the formatted message
+    formatted_message = {
+        "conversations": [
+            {
+                "role": "system",
+                "content": (
+                    "You are specializing in professional communication, tasked with composing a networking-focused cold email "
+                    "from a student, Pranjay. Given the data from the professional and the student's resume, "
+                    "your mission is to land a coffee chat. Make the networking email personalized to the receiver’s work experience, "
+                    "preferences, and interests provided by the data. The text must sound authentic and human. Keep the email short, "
+                    "100 to 200 words is ideal."
+                )
+            },
+            {
+                "role": "user",
+                "content": "Professional LinkedIn Data: " + json.dumps(user_content, indent=4) + "\n\n" + resume
             },
             {
                 "role": "assistant",
@@ -97,8 +97,8 @@ Certifications: Alteryx Designer Core
     # Append to the formatted data list
     formatted_data.append(formatted_message)
 
-# Save the formatted data to a new JSON file
-with open('formatted_output.json', 'w') as outfile:
-    json.dump(formatted_data, outfile, indent=4)
+# Save the formatted data to a new JSON file with UTF-8 encoding
+with open('formatted_output.json', 'w', encoding='utf-8') as outfile:
+    json.dump(formatted_data, outfile, indent=4, ensure_ascii=False)
 
 print("Data successfully formatted and saved to 'formatted_output.json'")
