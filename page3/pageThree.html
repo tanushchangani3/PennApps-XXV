@@ -10,7 +10,7 @@
     <div class="container">
         <div class="content">
             <h2>Fostering alumni<br>connections.</h2>
-            <form class="signup-form" onsubmit="submitForm(event)"> <!-- Prevent default form submission -->
+            <form class="signup-form" onsubmit="formSubmit(event)">
                 <div class="input-group">
                     <input type="text" id="firstName" placeholder="First Name" required>
                     <input type="text" id="lastName" placeholder="Last Name" required>
@@ -18,29 +18,47 @@
                 <input type="email" id="email" placeholder="School Email Address" required>
                 <input type="password" id="password" placeholder="Password" required>
                 <input type="text" id="linkedin" placeholder="LinkedIn" required>
-                <button type="submit" onclick="gotopage4()">SIGN UP</button> <!-- Submits the form via JavaScript -->
+                <button type="submit">SIGN UP</button>
             </form>
         </div>
         <img src="/Pictures/nyu.png" alt="NYU Logo" class="nyu-logo">
     </div>
 
-    <script>   
+    <script>
         function formSubmit(event) {
-            event.preventDefault();
+            event.preventDefault(); // Prevent default form submission
+
+            // Get form values
             const firstName = document.getElementById('firstName').value;
             const lastName = document.getElementById('lastName').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const linkedin = document.getElementById('linkedin').value;
 
-            localStorage.setItem('firstName', firstName);
-            localStorage.setItem('lastName', lastName);
-            localStorage.setItem('email', email);
-            localStorage.setItem('password', password);
-            localStorage.setItem('linkedin', linkedin);
-            window.location.href = '/page4/page4.html';  // Redirect to the next page
+            // Send form data to the server via fetch
+            fetch('http://localhost:3003/save-form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    firstName,
+                    lastName,
+                    email,
+                    password,
+                    linkedin
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                // Redirect to the next page
+                window.location.href = '/page4/page4.html';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
     </script>
-    <script src="../db/valueStore.js"></script>
 </body>
 </html>
