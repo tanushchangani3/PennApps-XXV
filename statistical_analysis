@@ -1,0 +1,103 @@
+# Required libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+
+
+# Load JSON data
+import json
+
+with open('trainingData (1).json', 'r') as f:
+    data = json.load(f)
+
+# Convert JSON to DataFrame
+df = pd.json_normalize(data)
+
+# Display first few rows
+df.head()
+
+
+# Filter relevant columns
+df_filtered = df[['first_name', 'last_name', 'current_company_name', 'current_company_position']]
+
+# Drop rows with missing company or position information
+df_filtered = df_filtered.dropna(subset=['current_company_name', 'current_company_position'])
+
+# Display cleaned data
+df_filtered.head()
+
+
+# Get top 10 companies
+top_companies = df_filtered['current_company_name'].value_counts().head(10)
+
+# Plot top companies
+plt.figure(figsize=(10,6))
+sns.barplot(x=top_companies.values, y=top_companies.index)
+plt.title('Top Companies Employing NYU Alumni')
+plt.xlabel('Number of Alumni')
+plt.ylabel('Company')
+plt.show()
+
+
+# Calculate percentage of alumni at top companies
+total_alumni = len(df_filtered)
+top_companies_percentage = (top_companies / total_alumni) * 100
+
+# Plot chances of getting into top companies
+plt.figure(figsize=(10,6))
+sns.barplot(x=top_companies_percentage.values, y=top_companies_percentage.index)
+plt.title('Chance of Getting into Top Companies as an NYU Alumnus (%)')
+plt.xlabel('Chance (%)')
+plt.ylabel('Company')
+plt.show()
+
+
+# Group by sectors (manually categorize companies into finance, consulting, tech, etc.)
+sectors = {
+    'Finance': ['Goldman Sachs', 'JPMorgan', 'Morgan Stanley'],
+    'Consulting': ['Deloitte', 'KPMG', 'PwC'],
+    'Tech': ['Google', 'Facebook', 'Amazon']
+}
+
+# Assign sectors to each alumni based on their company
+df_filtered['sector'] = df_filtered['current_company_name'].apply(lambda x: 'Finance' if x in sectors['Finance'] else
+                                                                ('Consulting' if x in sectors['Consulting'] else
+                                                                 ('Tech' if x in sectors['Tech'] else 'Other')))
+
+# Plot sector distribution
+sector_counts = df_filtered['sector'].value_counts()
+plt.figure(figsize=(8,6))
+sns.barplot(x=sector_counts.index, y=sector_counts.values)
+plt.title('Sector Distribution of NYU Alumni')
+plt.xlabel('Sector')
+plt.ylabel('Number of Alumni')
+plt.show()
+
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import LabelEncoder
+
+# Convert categorical variables to numeric using label encoding
+label_encoder = LabelEncoder()
+df_filtered['current_company_encoded'] = label_encoder.fit_transform(df_filtered['current_company_name'])
+
+# Define features and target
+X = df_filtered[['sector']]  # Simplified, could include more features
+y = df_filtered['current_company_encoded']
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Logistic Regression model
+log_reg = LogisticRegression()
+log_reg.fit(X_train, y_train)
+
+# Predict on test set
+y_pred = log_reg.predict(X_test)
+
+# Evaluate model
+print(f"Model Accuracy: {log_reg.score(X_test, y_test) * 100:.2f}%")
+
+
