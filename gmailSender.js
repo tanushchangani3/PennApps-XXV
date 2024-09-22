@@ -66,9 +66,12 @@ function sendEmail(auth) {
                 return;
             }
 
+            let data = emailAddress.split("\n");
+            const trimmedLinesArray = data.map(line => line.trim());
+
             // Now that we have the content from email.txt, send the email
             const gmail = google.gmail({ version: 'v1', auth });
-            const email = createEmail(emailText, emailAddress);  // Pass emailAddress to createEmail function
+            const email = createEmail(emailText, trimmedLinesArray[0]);  // Pass emailAddress to createEmail function
             const encodedEmail = Buffer.from(email).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 
             gmail.users.messages.send({

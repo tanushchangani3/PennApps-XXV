@@ -1,46 +1,53 @@
-// const fs = require('fs');
-
 // Sample JSON data
 const alumniData = [
     {
-        "name": "John Doe",
-        "role": "Senior Consultant",
-        "company": "ABC Corp",
-        "interests": ["Networking", "Consulting", "Finance"],
+        "name": "Hao Mack Yang L.",
+        "role": "Fullstack Developer",
+        "company": "Qiskit",
+        "interests": ["Quantum Computing", "Freelance", "Math/Physics Teacher"],
         "experience": "3-5 years",
-        "email": "example@example.com"
+        "email": "example@example.com",
+        "LinkedIn": "hao-mack-yang"
     },
     {
-        "name": "Jane Smith",
-        "role": "Project Manager",
-        "company": "XYZ Ltd",
-        "interests": ["Leadership", "Consulting", "Marketing"],
-        "experience": "5-10 years",
-        "email": "example@example.com"
+        "name": "Birks Sachdev",
+        "role": "Software Engineer",
+        "company": "Salesforce",
+        "interests": ["Entreprenuership", "Management", "Technology"],
+        "experience": "2-3 years",
+        "email": "example@example.com",
+        "LinkedIn": "birks-sachdev"
+
     },
     {
-        "name": "Michael Brown",
-        "role": "Data Analyst",
-        "company": "DataTech",
-        "interests": ["Analytics", "Big Data", "Finance"],
+        "name": "Dimple Bhanushali",
+        "role": "Director of Operations",
+        "company": "Freelance",
+        "interests": ["Supply Chain Scientice", "Finance", "Sustainability"],
         "experience": "1-3 years",
-        "email": "example@example.com"
+        "email": "example@example.com",
+        "LinkedIn": "dimple-bhanushali-77363643"
+
     },
     {
-        "name": "Jane Smith",
-        "role": "Project Manager",
-        "company": "XYZ Ltd",
-        "interests": ["Leadership", "Consulting", "Marketing"],
+        "name": "Nifasath A",
+        "role": "Software Engineer",
+        "company": "Agilent",
+        "interests": ["Early-stage Ventures", "AI", "Technology"],
         "experience": "5-10 years",
-        "email": "example@example.com"
+        "email": "example@example.com",
+        "LinkedIn": "nifasath"
+
     },
     {
-        "name": "Jane Smith",
-        "role": "Project Manager",
-        "company": "XYZ Ltd",
-        "interests": ["Leadership", "Consulting", "Marketing"],
-        "experience": "5-10 years",
-        "email": "example@example.com"
+        "name": "Twinkle Mohan",
+        "role": "Project Designer",
+        "company": "Freedom Mortgage",
+        "interests": ["Branding", "Products", "Designs"],
+        "experience": "4-5 years",
+        "email": "example@example.com",
+        "LinkedIn": "twinklemohan"
+
     },
 ];
 
@@ -91,8 +98,11 @@ function createAlumniCards(alumniData) {
         saveBtn.textContent = 'Send Email';
         saveBtn.onclick = function () {
             // When clicked, save email to file and trigger python script and Node.js
-            console.log("The button has been pressed!")
-            sendEmail(alumni.email);
+            console.log("The button has been pressed!");
+            console.log("linkedin: "+alumni.LinkedIn);
+            content = alumni.email+"\n"+alumni.LinkedIn;
+            console.log(content);
+            sendEmail(content);
         };
         card.appendChild(saveBtn);
 

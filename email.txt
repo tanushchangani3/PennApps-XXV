@@ -1,14 +1,15 @@
-Dear Lei,
+Dear Birks, 
 
 I hope you're doing well. 
 
-I'm John, a sophomore studying data analytics at Harvard University. I'm writing to inquire about your availability for a short call in the coming weeks to hear about your experience at EY and how you got into data science. 
+My name is John Doe, and I am a sophomore at Harvard studying computer science and mathematics. I am writing to inquire about your availability for a quick call or coffee in the coming weeks to hear about your experiences as a software engineer at Salesforce and learn more about your work as a member of the technical staff. 
 
-As someone unsure about the best way to start a career in data science after completing my undergraduate studies, advice from someone with so much experience would be amazing. I'd love to learn more about your projects at EY and how you've approached them from a data analysis perspective. 
+I am particularly interested in exploring a career in data science and would love to hear about your transition into this field. Your experience working with renewable energy systems and solar payments software (at SunPower and ClimateCardinals) is impressive. I would love to know more about how you came to focus your career in software development and what advice you would give to someone just starting out. 
 
-I have attached my resume for you to look over, and I would gladly work around your schedule to find a time that fits. 
+I am attaching my resume for you to look over, and I would be happy to work around your schedule to find a time that fits. 
 
-I'm looking forward to hearing from you and hope you have a great rest of your week! 
+Thank you for considering my request, and I look forward to hearing from you. 
 
-Best regards, 
+Sincerely, 
+
 John Doe

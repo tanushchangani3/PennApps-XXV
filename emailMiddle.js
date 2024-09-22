@@ -14,6 +14,7 @@ app.post('/send-email', (req, res) => {
     const email = req.body.email;
     console.log("writing emailAddress.txt");
     // Save email to emailAddress.txt
+    // const content = email+"\n"+{name};
     fs.writeFile('emailAddress.txt', email, (err) => {
         if (err) {
             console.error('Error writing to emailAddress.txt:', err);
@@ -21,6 +22,7 @@ app.post('/send-email', (req, res) => {
         }
 
         // Run the Python script to generate the email text
+        setTimeout(()=>{}, 2000)
         console.log("exec python");
         exec('python prompt_maker.py', (error, stdout, stderr) => {
             if (error) {
