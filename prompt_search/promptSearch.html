@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Profile Matcher</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&display=swap');
+
+        body {
+            font-family: Figtree, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        label, input {
+            display: block;
+            margin: 10px 0;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .profile {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+        }
+        .profile h3 {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Find Your Career Match</h1>
+        <label for="interests">Enter Your Interests/Skills (comma separated):</label>
+        <input type="text" id="interests" placeholder="e.g., Python, Marketing, Music" />
+
+        <button id="searchBtn">Find Matches</button>
+
+        <div class="results" id="results">
+            <!-- Matching profiles will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        const searchBtn = document.getElementById('searchBtn');
+        const resultsDiv = document.getElementById('results');
+
+        const profiles = [
+            {
+                "name": "Alice Johnson",
+                "career": "Software Engineer",
+                "skills": ["JavaScript", "Python", "Machine Learning"],
+                "interests": ["AI", "Gaming", "Music"]
+            },
+            {
+                "name": "Bob Smith",
+                "career": "Data Scientist",
+                "skills": ["Python", "R", "Data Analysis"],
+                "interests": ["Data Visualization", "Hiking", "Photography"]
+            },
+            {
+                "name": "Emily Davis",
+                "career": "Marketing Specialist",
+                "skills": ["SEO", "Content Creation", "Social Media"],
+                "interests": ["Writing", "Art", "Fashion"]
+            }
+        ];
+
+        // Function to calculate similarity score based on shared skills/interests
+        function calculateMatch(userInput, profile) {
+            const userKeywords = userInput.toLowerCase().split(',').map(item => item.trim());
+            let matchScore = 0;
+
+            profile.skills.forEach(skill => {
+                if (userKeywords.includes(skill.toLowerCase())) {
+                    matchScore++;
+                }
+            });
+
+            profile.interests.forEach(interest => {
+                if (userKeywords.includes(interest.toLowerCase())) {
+                    matchScore++;
+                }
+            });
+
+            return matchScore;
+        }
+
+        // Function to display matching profiles
+        function displayMatches(matches) {
+            resultsDiv.innerHTML = ''; // Clear previous results
+
+            if (matches.length === 0) {
+                resultsDiv.innerHTML = '<p>No matches found.</p>';
+                return;
+            }
+
+            matches.sort((a, b) => b.matchScore - a.matchScore);
+
+            matches.forEach(match => {
+                const profileDiv = document.createElement('div');
+                profileDiv.classList.add('profile');
+                profileDiv.innerHTML = `
+                    <h3>${match.name} (${match.career})</h3>
+                    <p>Skills: ${match.skills.join(', ')}</p>
+                    <p>Interests: ${match.interests.join(', ')}</p>
+                    <p>Match Score: ${match.matchScore}</p>
+                `;
+                resultsDiv.appendChild(profileDiv);
+            });
+        }
+
+        // Event listener for search button
+        searchBtn.addEventListener('click', () => {
+            const userInput = document.getElementById('interests').value;
+
+            if (userInput === '') {
+                alert('Please enter your interests or skills.');
+                return;
+            }
+
+            const matches = profiles.map(profile => {
+                return {
+                    ...profile,
+                    matchScore: calculateMatch(userInput, profile)
+                };
+            }).filter(profile => profile.matchScore > 0);
+
+            displayMatches(matches);
+        });
+    </script>
+</body>
+</html>
