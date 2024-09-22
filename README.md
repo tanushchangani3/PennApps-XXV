@@ -1,5 +1,7 @@
 # 🎉 CoffeeStarter: Your Personal Networking Agent 🚀
 
+Names: Sutharsika Kumar, Aarav Jindal, Tanush Changani & Pranjay Kumar
+
 Welcome to **CoffeeStarter**, a cutting-edge tool designed to revolutionize personal networking by connecting you with alumni from your school's network effortlessly. Perfect for hackathons and beyond, CoffeeStarter blends advanced technology with user-friendly features to help you build meaningful professional relationships.
 
 ---

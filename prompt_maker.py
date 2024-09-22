@@ -117,6 +117,7 @@ first_name = "John"
 last_name = "Doe"
 linkedin_profile_id = "lei-jiang-836109b9"
 
+
 form_data = []
 
 with open('formData.txt', 'r') as file:
@@ -127,5 +128,22 @@ with open('formData.txt', 'r') as file:
 first_name = form_data[0]
 last_name = form_data[1]
 
+lines_array = []
+
+# Open the file and read the lines
+with open('emailAddress.txt', 'r') as file:
+    # Iterate through each line in the file
+    for line in file:
+        # Strip the newline character and add to the array
+        lines_array.append(line.strip())
+linkedin_profile_id = lines_array[1]
+print("linkedin: "+linkedin_profile_id)
+
 email_text = generate_networking_email(resume, grade, school, area_of_interest, first_name, last_name, linkedin_profile_id)
+print("making file")
 print(email_text)
+
+with open('email.txt', 'w') as text_file:
+            text_file.write(email_text)
+
+print("made file")
