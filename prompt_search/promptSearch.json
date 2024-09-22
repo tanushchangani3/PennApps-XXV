@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Alice Johnson",
+        "career": "Software Engineer",
+        "skills": ["JavaScript", "Python", "Machine Learning"],
+        "interests": ["AI", "Gaming", "Music"]
+    },
+    {
+        "name": "Bob Smith",
+        "career": "Data Scientist",
+        "skills": ["Python", "R", "Data Analysis"],
+        "interests": ["Data Visualization", "Hiking", "Photography"]
+    },
+    {
+        "name": "Emily Davis",
+        "career": "Marketing Specialist",
+        "skills": ["SEO", "Content Creation", "Social Media"],
+        "interests": ["Writing", "Art", "Fashion"]
+    }
+]
