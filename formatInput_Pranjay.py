@@ -78,7 +78,7 @@ for profile in profiles:
                 "content": (
                     "You are specializing in professional communication, tasked with composing a networking-focused cold email "
                     "from a student, Pranjay. Given the data from the professional and the student's resume, "
-                    "your mission is to land a coffee chat. Make the networking email personalized to the receiver’s work experience, "
+                    "your mission is to land a coffee chat. Personal Information about the student: Junior at NYU Stern Interested in Consulting. Make the networking email personalized to the receiver’s work experience, "
                     "preferences, and interests provided by the data. The text must sound authentic and human. Keep the email short, "
                     "100 to 200 words is ideal."
                 )
