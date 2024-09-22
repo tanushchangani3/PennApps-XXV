@@ -9,9 +9,18 @@ const TOKEN_PATH = path.join(__dirname, 'token.json');
 
 const SCOPES = ['https://www.googleapis.com/auth/gmail.send'];
 
+let email_text
+
+fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log("Python Variable from JSON:", data.python_variable);
+            });
+
+
 fs.readFile(CREDENTIALS_PATH, (err, content) => {
     if (err) return console.log('Error loading client secret file:', err);
-    authorize(JSON.parse(content), sendEmail);
+    authorize(JSON.parse(content), sendEmail());
 });
 
 function authorize(credentials, callback) {
@@ -63,14 +72,14 @@ function sendEmail(auth) {
     });
 }
 
-function createEmail() {
+function createEmail(emailText) {
     return [
         'From: "Your Name" <your-email@gmail.com>',
         'To: recipient@example.com',
         'Subject: Test Email from Node.js',
         'Content-Type: text/plain; charset=utf-8',
         '',
-        'Hello,\n\nThis is a test email sent from a Node.js app using the Gmail API.'
+        emailText
     ].join('\n');
 }
 

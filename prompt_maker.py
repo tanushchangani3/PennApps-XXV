@@ -119,3 +119,11 @@ linkedin_profile_id = "lei-jiang-836109b9"
 
 email_text = generate_networking_email(resume, grade, school, area_of_interest, first_name, last_name, linkedin_profile_id)
 print(email_text)
+
+import json
+
+data = {"emailText": email_text}
+
+# Write data to a JSON file
+with open('data.json', 'w') as json_file:
+    json.dump(data, json_file)
