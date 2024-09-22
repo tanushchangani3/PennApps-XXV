@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoffeeStarter - Alumni Suggestions</title>
+    <!-- Import Google Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="../messagePage/messagePage.html"><span class="material-symbols-outlined">chat</span></a> Message</li>
+            <li><a href="#"><span class="material-symbols-outlined">schedule</span></a> Schedule</li>
+            <li><a href="#"><span class="material-symbols-outlined">smart_toy</span></a> Prompting</li>
+            <li><a href="#"><span class="material-symbols-outlined">analytics</span></a> Analytics</li>
+            <li><a href="#"><span class="material-symbols-outlined">help</span></a> Help</li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Navbar -->
+        <nav class="navbar">
+            <h1 class="logo">CoffeeStarter</h1>
+            <ul class="nav-links">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Network</a></li>
+                <li><a href="#"><span class="material-symbols-outlined">account_circle</span></a></li>
+                <li></li>
+            </ul>
+        </nav>
+
+        <!-- Search Bar -->
+        <section class="header-section">
+            <h2>Welcome, John.</h2>
+            <input type="text" class="search-bar" placeholder="Search for something specific">
+        </section>
+
+        <!-- Suggested Alumni Section -->
+        <section class="suggested-alumni">
+            <h3>Suggested Alumni</h3>
+            <div class="alumni-container" id="alumni-container">
+                <!-- Alumni cards will be dynamically inserted here -->
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

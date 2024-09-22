@@ -1,0 +1,208 @@
+/* Ensure the html and body take full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Figtree', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 80px; /* Slim width for the sidebar */
+    height: 400px; /* Fixed height for the slim sidebar */
+    background: linear-gradient(135deg, #003366, #47a6a8);
+    padding-top: 30px;
+    position: fixed;
+    top: 50%; /* Center vertically in the viewport */
+    transform: translateY(-50%); /* Adjust position to center */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px; /* Rounded corners for style */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.sidebar ul li {
+    margin-bottom: 20px;
+    font-size: 0.9rem; /* Smaller font size for compactness */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center icons and text */
+}
+
+.sidebar ul li span {
+    font-size: 1.8rem; /* Adjust icon size */
+    margin-bottom: 5px; /* Space between icon and text */
+}
+
+/* Main content */
+.main-content {
+    margin-left: 100px; /*Leave space for the sidebar*/
+    /* width: calc(100% - 100px); */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full width across the viewport */
+    z-index: 1000;
+    margin: 0;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    background: linear-gradient(135deg, #003366, #47a6a8);
+    padding-top: 20px; /*Added horizontal padding*/
+    padding-bottom: 20px;
+    padding-right: 40px;
+    padding-left: 20px;
+}
+
+.logo {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+.nav-links li {
+    display: inline-block;
+    margin-left: 30px; /* Increased spacing between links */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center; /* Center the icon vertically */
+}
+
+.material-symbols-outlined {
+    font-size: 32px; /* Slightly increased icon size */
+    color: white;
+    margin-left: 5px; /* Added spacing between text and icon */
+}
+
+/* Content below the navbar */
+.header-section {
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.header-section h2 {
+    margin-bottom: 10px;
+}
+
+.search-bar {
+    width: 60%;
+    padding: 10px;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+.suggested-alumni {
+    padding: 20px;
+}
+
+.suggested-alumni h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.alumni-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    justify-content: center;
+}
+
+.alumni-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.alumni-card:hover {
+    transform: scale(1.05); /* Hover effect to enlarge */
+}
+
+.alumni-card .profile-placeholder {
+    background: linear-gradient(135deg, #003366, #47a6a8);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 3rem;
+}
+
+.alumni-card h4 {
+    margin-top: 15px;
+    font-size: 1.2rem;
+}
+
+.alumni-card p {
+    font-size: 1rem;
+    color: #666;
+    margin: 10px 0;
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background: black;
+    color: white;
+    font-size: 0.8rem;
+    margin: 5px 5px 0 0;
+}
+
+.experience-tag {
+    display: block;
+    margin-top: 10px;
+}
+
+.save-btn {
+    bottom: 20px;
+    transform: translateX(-50%);
+    background: #47a6a8;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    margin-left: 45%;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.save-btn:hover {
+    background: #003366;
+}

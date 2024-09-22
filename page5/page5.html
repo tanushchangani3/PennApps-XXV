@@ -28,7 +28,7 @@
 
         h2 {
             font-size: 2.5rem;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             font-weight: 600;
         }
 
@@ -102,7 +102,8 @@
         }
 
         .logo img {
-            width: 80px;
+            width: 300px;
+            height: auto;
         }
     </style>
 </head>
@@ -129,8 +130,15 @@
         const questions = [
             "What are your interests?",
             "What jobs are you looking for?",
-            "Where are you located?"
+            "Where are you located?",
+            "Click again if you ready to network!",
         ];
+        const placeHolders = [
+            "Finance",
+            "Investment Banking",
+            "Philadelphia, PA",
+            "",
+        ]
         let currentQuestionIndex = 0;
 
         const questionText = document.getElementById('questionText');
@@ -145,10 +153,10 @@
 
             // If we still have more questions
             if (currentQuestionIndex < questions.length) {
-                changeQuestion(questions[currentQuestionIndex]);
+                changeQuestion(questions[currentQuestionIndex], placeHolders[currentQuestionIndex]);
             } else {
                 // When all questions are answered
-                alert('Thank you for your answers!');
+                window.location.href = "/page6/page6.html";
                 // Redirect or perform other actions here
             }
 
@@ -156,14 +164,18 @@
             answerInput.value = '';
         }
 
-        function changeQuestion(newQuestion) {
+        function changeQuestion(newQuestion, newPlaceholder) {
             // Fade out
             questionText.classList.add('fade');
+            // answerInput.classList.
             setTimeout(() => {
                 // Update the text after the fade out
                 questionText.textContent = newQuestion;
                 questionText.classList.remove('fade');
                 questionText.classList.add('fade-active');
+
+                answerInput.placeholder = newPlaceholder
+
             }, 500); // Matches the CSS transition duration
         }
     </script>
