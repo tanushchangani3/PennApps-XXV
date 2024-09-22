@@ -1,3 +1,5 @@
+// const fs = require('fs');
+
 // Sample JSON data
 const alumniData = [
     {
@@ -5,35 +7,40 @@ const alumniData = [
         "role": "Senior Consultant",
         "company": "ABC Corp",
         "interests": ["Networking", "Consulting", "Finance"],
-        "experience": "3-5 years"
+        "experience": "3-5 years",
+        "email": "example@example.com"
     },
     {
         "name": "Jane Smith",
         "role": "Project Manager",
         "company": "XYZ Ltd",
         "interests": ["Leadership", "Consulting", "Marketing"],
-        "experience": "5-10 years"
+        "experience": "5-10 years",
+        "email": "example@example.com"
     },
     {
         "name": "Michael Brown",
         "role": "Data Analyst",
         "company": "DataTech",
         "interests": ["Analytics", "Big Data", "Finance"],
-        "experience": "1-3 years"
+        "experience": "1-3 years",
+        "email": "example@example.com"
     },
     {
         "name": "Jane Smith",
         "role": "Project Manager",
         "company": "XYZ Ltd",
         "interests": ["Leadership", "Consulting", "Marketing"],
-        "experience": "5-10 years"
+        "experience": "5-10 years",
+        "email": "example@example.com"
     },
     {
         "name": "Jane Smith",
         "role": "Project Manager",
         "company": "XYZ Ltd",
         "interests": ["Leadership", "Consulting", "Marketing"],
-        "experience": "5-10 years"
+        "experience": "5-10 years",
+        "email": "example@example.com"
     },
 ];
 
@@ -82,11 +89,28 @@ function createAlumniCards(alumniData) {
         const saveBtn = document.createElement('button');
         saveBtn.className = 'save-btn';
         saveBtn.textContent = 'Send Email';
+        saveBtn.onclick = function () {
+            // When clicked, save email to file and trigger python script and Node.js
+            sendEmail(alumni.email);
+        };
         card.appendChild(saveBtn);
+
+
 
         // Append card to alumni container
         alumniContainer.appendChild(card);
     });
+}
+
+function sendEmail(email) {
+    fetch('http://localhost:3002/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+    })
+    .then(response => response.json())
+    .then(data => console.log('Email sent:', data.message))
+    .catch(err => console.error('Error sending email:', err));
 }
 
 // Call the function to generate alumni cards

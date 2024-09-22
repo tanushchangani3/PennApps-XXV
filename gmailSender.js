@@ -7,6 +7,7 @@ const path = require('path');
 const CREDENTIALS_PATH = path.join(__dirname, 'credentials.json');
 const TOKEN_PATH = path.join(__dirname, 'token.json');
 const EMAIL_FILE_PATH = path.join(__dirname, 'email.txt'); // Path to email.txt
+const EMAIL_ADDRESS_FILE_PATH = path.join(__dirname, 'emailAddress.txt');
 
 const SCOPES = ['https://www.googleapis.com/auth/gmail.send'];
 
@@ -58,18 +59,25 @@ function sendEmail(auth) {
             console.error('Error reading email.txt:', err);
             return;
         }
+    
+        fs.readFile(EMAIL_ADDRESS_FILE_PATH, 'utf8', (err, emailAddress) => {
+            if (err) {
+                console.error('Error reading emailAddress.txt:', err);
+                return;
+            }
 
-        // Now that we have the content from email.txt, send the email
-        const gmail = google.gmail({ version: 'v1', auth });
-        const email = createEmail(emailText);  // Pass the content of email.txt to createEmail function
-        const encodedEmail = Buffer.from(email).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+            // Now that we have the content from email.txt, send the email
+            const gmail = google.gmail({ version: 'v1', auth });
+            const email = createEmail(emailText);  // Pass the content of email.txt to createEmail function
+            const encodedEmail = Buffer.from(email).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 
-        gmail.users.messages.send({
-            userId: 'me',
-            resource: { raw: encodedEmail },
-        }, (err, res) => {
-            if (err) return console.log('The API returned an error: ' + err);
-            console.log('Email sent:', res.data);
+            gmail.users.messages.send({
+                userId: 'me',
+                resource: { raw: encodedEmail },
+            }, (err, res) => {
+                if (err) return console.log('The API returned an error: ' + err);
+                console.log('Email sent:', res.data);
+            });
         });
     });
 }
@@ -78,7 +86,7 @@ function sendEmail(auth) {
 function createEmail(emailText) {
     return [
         'From: "Your Name" <your-email@gmail.com>',
-        'To: recipient@example.com',
+        'To: '+emailAddress,
         'Subject: Email with content from email.txt',
         'Content-Type: text/plain; charset=utf-8',
         '',
