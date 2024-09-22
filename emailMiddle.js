@@ -12,7 +12,7 @@ app.use(cors());  // This enables CORS for all requests from any origin
 // Endpoint to save the email and trigger the Python and Node.js scripts
 app.post('/send-email', (req, res) => {
     const email = req.body.email;
-
+    console.log("writing emailAddress.txt");
     // Save email to emailAddress.txt
     fs.writeFile('emailAddress.txt', email, (err) => {
         if (err) {
@@ -21,6 +21,7 @@ app.post('/send-email', (req, res) => {
         }
 
         // Run the Python script to generate the email text
+        console.log("exec python");
         exec('python prompt_maker.py', (error, stdout, stderr) => {
             if (error) {
                 console.error(`Error running Python script: ${stderr}`);
@@ -30,6 +31,7 @@ app.post('/send-email', (req, res) => {
             // Add a delay before sending the email
             setTimeout(() => {
                 // Run the Node.js script to send the email
+                console.log("exec node");
                 exec('node gmailSender.js', (error, stdout, stderr) => {
                     if (error) {
                         console.error(`Error running gmailSender.js: ${stderr}`);

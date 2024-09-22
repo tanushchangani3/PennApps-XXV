@@ -91,6 +91,7 @@ function createAlumniCards(alumniData) {
         saveBtn.textContent = 'Send Email';
         saveBtn.onclick = function () {
             // When clicked, save email to file and trigger python script and Node.js
+            console.log("The button has been pressed!")
             sendEmail(alumni.email);
         };
         card.appendChild(saveBtn);
