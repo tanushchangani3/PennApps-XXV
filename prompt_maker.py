@@ -9,7 +9,7 @@ import requests
 stream = False
 url = "https://proxy.tune.app/chat/completions"
 headers = {
-    "Authorization": "sk-tune-VphHayIWwMO9sbqJYAlm3pvjeaXRYIgcelb",
+    "Authorization": "sk-tune-FJdgWoOuqe9o7GjRvzOPq0q1G9QDm87K1FO",
     "Content-Type": "application/json",
 }
 resume = input("Enter the resume of the student: ")
@@ -53,7 +53,7 @@ data = {
             "content": "Professional LinkedIn Data: " + json.dumps(user_content, indent=4) + "\nStudent Resume: " + resume
         }
     ],
-    "model": "Pranjay/Email-v3-model-775eeiup",
+    "model": "sutharsikakumar/NYU-Stern-model-zrndbtz8",
     "stream": stream,
     "frequency_penalty":  0.2,
     "max_tokens": 900,
