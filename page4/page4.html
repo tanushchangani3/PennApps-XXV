@@ -16,21 +16,33 @@
             <h1>Verify your email.</h1>
             <p class="message">We have sent an email to your inbox.</p>
             <div class="loading-spinner"></div>
+
             <p class="upload">Upload your resume below.</p>
             <label class="custom-file-upload">
                 <input type="file" class="resume-upload" accept="application/pdf" />
                 Upload PDF
             </label>
-            <p class2 ="upload">Upload your email style below.</p>
-            <label class="custom-file-upload2">
+
+            <p class="upload">Upload your email style below.</p> <!-- Changed class2 to class -->
+            <label class="custom-file-upload"> <!-- Use the same class as resume upload -->
                 <input type="file" class="text-upload" accept="writingstyle/pdf" />
                 Upload PDF
             </label>
+
+            <!-- New Next Page button -->
+            <div class="button-container">
+                <button class="next-page-btn" onclick="goToNextPage()">Next Page</button>
+            </div>
         </div>
         <div class="logo">
             <img src="/Pictures/nyu.png" alt="NYU Logo" class="nyu-logo">
         </div>
     </div>
+
+    <script>
+        function goToNextPage() {
+            window.location.href = '/page5/page5.html';  // Replace with your next page URL
+        }
+    </script>
 </body>
 </html>
-

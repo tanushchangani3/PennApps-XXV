@@ -117,6 +117,17 @@ first_name = "John"
 last_name = "Doe"
 linkedin_profile_id = "lei-jiang-836109b9"
 
+with open('uniSave.txt', 'r') as file:
+     for line in file:
+          school = line.strip()
+          
+deets = []
+
+with open('saveDeets.js', 'r') as file:
+     for line in file:
+          deets.append(line.strip())
+
+area_of_interest = deets[1]
 
 form_data = []
 

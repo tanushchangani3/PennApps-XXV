@@ -71,8 +71,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 20px;
-            height: 20px;
+            width: 50px; /* increased size */
+            height: 50px;
         }
 
         .submit-button:hover {
@@ -112,13 +112,13 @@
     <div class="container">
         <h2>Your personalized agent is on the way.</h2>
         <p id="questionText">What are your interests?</p>
-        <input type="text" id="answerInput" placeholder="Finance" onsubmit=detailSubmit()/>
+        <input type="text" id="answerInput" placeholder="Finance" />
         
         <!-- Button aligned to the left inside a container -->
         <div class="button-container">
-            <div class="submit-button" onclick="submitAnswer()">
+            <button class="submit-button" id="submitButton">
                 <span class="material-symbols-outlined">arrow_forward_ios</span>
-            </div>
+            </button>
         </div>
     </div>
 
@@ -131,7 +131,7 @@
             "What are your interests?",
             "What jobs are you looking for?",
             "Where are you located?",
-            "Click again if you ready to network!",
+            "Click again if you're ready to network!",
         ];
         const placeHolders = [
             "Finance",
@@ -143,8 +143,10 @@
 
         const questionText = document.getElementById('questionText');
         const answerInput = document.getElementById('answerInput');
+        const submitButton = document.getElementById('submitButton');
 
-        function submitAnswer() {
+        submitButton.addEventListener('click', (event) => {
+            event.preventDefault();
             // Get the current answer (you can store it or process it as needed)
             const answer = answerInput.value;
 
@@ -152,27 +154,26 @@
             currentQuestionIndex++;
 
             if (currentQuestionIndex < questions.length) {
-
-            // Send form data to the server via fetch
-            fetch('http://localhost:3005/save-deets', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    answer: answer
+                // Send form data to the server via fetch
+                fetch('http://localhost:3005/save-deets', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        answer: answer
+                    })
                 })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.message);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.message);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
 
-            // If we still have more questions
-            changeQuestion(questions[currentQuestionIndex], placeHolders[currentQuestionIndex]);
+                // If we still have more questions
+                changeQuestion(questions[currentQuestionIndex], placeHolders[currentQuestionIndex]);
 
             } else {
                 // When all questions are answered
@@ -182,12 +183,11 @@
 
             // Clear the input field
             answerInput.value = '';
-        }
+        });
 
         function changeQuestion(newQuestion, newPlaceholder) {
             // Fade out
             questionText.classList.add('fade');
-            // answerInput.classList.
             setTimeout(() => {
                 // Update the text after the fade out
                 questionText.textContent = newQuestion;

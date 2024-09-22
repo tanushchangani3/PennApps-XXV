@@ -1,15 +1,14 @@
 Dear Birks, 
 
-I hope you're doing well. 
+I hope you are doing well. 
 
-My name is John Doe, and I am a sophomore at Harvard studying computer science and mathematics. I am writing to inquire about your availability for a quick call or coffee in the coming weeks to hear about your experiences as a software engineer at Salesforce and learn more about your work as a member of the technical staff. 
+My name is Aarav Jindal, and I am a sophomore at Princeton studying electrical engineering and computer science. 
 
-I am particularly interested in exploring a career in data science and would love to hear about your transition into this field. Your experience working with renewable energy systems and solar payments software (at SunPower and ClimateCardinals) is impressive. I would love to know more about how you came to focus your career in software development and what advice you would give to someone just starting out. 
+I am writing to inquire about your availability for a quick call or coffee in the coming weeks to hear about your experience as a software engineer at Salesforce. 
 
-I am attaching my resume for you to look over, and I would be happy to work around your schedule to find a time that fits. 
+As someone uncertain about the best way to start a career in software development, advice from someone with so much experience would be invaluable. I am particularly interested in learning more about how you transitioned from studying electrical engineering and computer science to a career in software engineering. 
 
-Thank you for considering my request, and I look forward to hearing from you. 
+I am attaching my resume for your reference. I look forward to hearing from you and hope you have a great week! 
 
-Sincerely, 
-
-John Doe
+Best regards, 
+Aarav Jindal

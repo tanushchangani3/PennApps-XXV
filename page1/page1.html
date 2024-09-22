@@ -25,7 +25,7 @@
             <h2>Your personal<br>networking agent.</h2>
             <p class="subheading">Enter your university</p>
             <!-- Input field for university -->
-            <input type="text" placeholder="New York University" class="university-input" id="universityInput" onsubmit=formSubmit()>
+            <input type="text" placeholder="New York University" class="university-input" id="universityInput" onkeydown="checkEnter(event)">
         </div>
 
         <!-- Divider -->
@@ -42,6 +42,14 @@
 
     <!-- JavaScript to handle Enter key and page navigation -->
     <script>
+
+        function checkEnter(event) {
+            if (event.key === "Enter") {
+                formSubmit(event);  // Call formSubmit when Enter is pressed
+            }
+        }
+
+
         function formSubmit(event) {
             event.preventDefault(); // Prevent default form submission
 
@@ -62,11 +70,13 @@
             .then(data => {
                 console.log(data.message);
                 // Redirect to the next page
-                window.location.href = '/page4/page4.html';
+                window.location.href = '/page2/page2.html';
             })
             .catch(error => {
                 console.error('Error:', error);
             });
+
+            window.location.href = '/page2/page2.html';
         }
     </script>
 

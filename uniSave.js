@@ -11,7 +11,7 @@ app.use(cors());  // This enables CORS for all requests from any origin
 
 // Endpoint to save the email and trigger the Python and Node.js scripts
 app.post('/save-university', (req, res) => {
-    const email = req.body.univerity;
+    const email = req.body.university;
     console.log("writing uniSave.txt");
     // Save email to emailAddress.txt
     // const content = email+"\n"+{name};
