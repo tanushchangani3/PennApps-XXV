@@ -117,6 +117,17 @@ first_name = "John"
 last_name = "Doe"
 linkedin_profile_id = "lei-jiang-836109b9"
 
+
+form_data = []
+
+with open('formData.txt', 'r') as file:
+    # Iterate through each line in the file
+    for line in file:
+        # Strip the newline character and add to the array
+        form_data.append(line.strip())
+first_name = form_data[0]
+last_name = form_data[1]
+
 lines_array = []
 
 # Open the file and read the lines

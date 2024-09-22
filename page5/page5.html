@@ -112,7 +112,7 @@
     <div class="container">
         <h2>Your personalized agent is on the way.</h2>
         <p id="questionText">What are your interests?</p>
-        <input type="text" id="answerInput" placeholder="Finance" />
+        <input type="text" id="answerInput" placeholder="Finance" onsubmit=detailSubmit()/>
         
         <!-- Button aligned to the left inside a container -->
         <div class="button-container">
@@ -151,9 +151,29 @@
             // Proceed to the next question
             currentQuestionIndex++;
 
-            // If we still have more questions
             if (currentQuestionIndex < questions.length) {
-                changeQuestion(questions[currentQuestionIndex], placeHolders[currentQuestionIndex]);
+
+            // Send form data to the server via fetch
+            fetch('http://localhost:3005/save-deets', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    answer: answer
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+            // If we still have more questions
+            changeQuestion(questions[currentQuestionIndex], placeHolders[currentQuestionIndex]);
+
             } else {
                 // When all questions are answered
                 window.location.href = "/page6/page6.html";
