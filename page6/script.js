@@ -5,40 +5,48 @@ const alumniData = [
         "role": "Fullstack Developer",
         "company": "Qiskit",
         "interests": ["Quantum Computing", "Freelance", "Math/Physics Teacher"],
-        "experience": "3-5 years"
-        "email": "hao.mack.yang@gmail.com"
+        "experience": "3-5 years",
+        "email": "example@example.com",
+        "LinkedIn": "hao-mack-yang"
     },
     {
         "name": "Birks Sachdev",
         "role": "Software Engineer",
         "company": "Salesforce",
         "interests": ["Entreprenuership", "Management", "Technology"],
-        "experience": "2-3 years"
-        "email": "bsachdev10@gmail.com"
+        "experience": "2-3 years",
+        "email": "example@example.com",
+        "LinkedIn": "birks-sachdev"
     },
     {
         "name": "Dimple Bhanushali",
         "role": "Director of Operations",
         "company": "Freelance",
         "interests": ["Supply Chain Scientice", "Finance", "Sustainability"],
-        "experience": "1-3 years"
-        "email": "dimplebhanushali224@gmail.com"
+        "experience": "1-3 years",
+        "email": "example@example.com",
+        "LinkedIn": "dimple-bhanushali-77363643"
+
     },
     {
         "name": "Nifasath A",
         "role": "Software Engineer",
         "company": "Agilent",
         "interests": ["Early-stage Ventures", "AI", "Technology"],
-        "experience": "5-10 years"
-        "email": "nifasathsa@gmail.com"
+        "experience": "5-10 years",
+        "email": "example@example.com",
+        "LinkedIn": "nifasath"
+
     },
     {
         "name": "Twinkle Mohan",
         "role": "Project Designer",
         "company": "Freedom Mortgage",
         "interests": ["Branding", "Products", "Designs"],
-        "experience": "4-5 years"
-        "email": "twinkle18mohan@gmail.com"
+        "experience": "4-5 years",
+        "email": "example@example.com",
+        "LinkedIn": "twinklemohan"
+
     },
 ];
 
@@ -87,11 +95,32 @@ function createAlumniCards(alumniData) {
         const saveBtn = document.createElement('button');
         saveBtn.className = 'save-btn';
         saveBtn.textContent = 'Send Email';
+        saveBtn.onclick = function () {
+            // When clicked, save email to file and trigger python script and Node.js
+            console.log("The button has been pressed!");
+            console.log("linkedin: "+alumni.LinkedIn);
+            content = alumni.email+"\n"+alumni.LinkedIn;
+            console.log(content);
+            sendEmail(content);
+        };
         card.appendChild(saveBtn);
+
+
 
         // Append card to alumni container
         alumniContainer.appendChild(card);
     });
+}
+
+function sendEmail(email) {
+    fetch('http://localhost:3002/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+    })
+    .then(response => response.json())
+    .then(data => console.log('Email sent:', data.message))
+    .catch(err => console.error('Error sending email:', err));
 }
 
 // Call the function to generate alumni cards
