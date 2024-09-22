@@ -1,0 +1,7 @@
+pandas
+PyPDF2
+numpy
+requests
+flask
+textwrap
+csv
