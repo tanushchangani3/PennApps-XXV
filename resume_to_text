@@ -1,0 +1,21 @@
+import re
+import PyPDF2
+
+def extract_text_from_pdf(file_path):
+    with open(file_path, 'rb') as file:
+        reader = PyPDF2.PdfReader(file)
+        text = ""
+        for page_num in range(len(reader.pages)):
+            page = reader.pages[page_num]
+            text += page.extract_text()
+    
+    return text
+
+if __name__ == "__main__":
+    file_path = "Copy of Resume - Pranjay Kumar.pdf"
+    text = extract_text_from_pdf(file_path)
+    
+    with open("resume.txt", "w", encoding="utf-8") as text_file:
+        text_file.write(text)
+    
+    print("Text extracted and saved to resume.txt")
