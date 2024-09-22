@@ -17,7 +17,7 @@
             background: linear-gradient(135deg, #003366, #47a6a8);
             color: white;
         }
-
+\
         .container {
             text-align: left;
             max-width: 600px;
@@ -147,6 +147,18 @@
         function submitAnswer() {
             // Get the current answer (you can store it or process it as needed)
             const answer = answerInput.value;
+
+            switch (currentQuestionIndex) {
+                case 0:
+                    localStorage.setItem('interests', answer)
+                    break;
+                case 1:
+                    localStorage.setItem('jobType', answer)
+                    break;
+                case 2:
+                    localStorage.setItem('location', answer)
+                    break;
+            }
 
             // Proceed to the next question
             currentQuestionIndex++;
