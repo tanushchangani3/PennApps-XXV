@@ -6,21 +6,13 @@ const path = require('path');
 
 const CREDENTIALS_PATH = path.join(__dirname, 'credentials.json');
 const TOKEN_PATH = path.join(__dirname, 'token.json');
+const EMAIL_FILE_PATH = path.join(__dirname, 'email.txt'); // Path to email.txt
 
 const SCOPES = ['https://www.googleapis.com/auth/gmail.send'];
 
-let email_text
-
-fetch('data.json')
-            .then(response => response.json())
-            .then(data => {
-                console.log("Python Variable from JSON:", data.python_variable);
-            });
-
-
 fs.readFile(CREDENTIALS_PATH, (err, content) => {
     if (err) return console.log('Error loading client secret file:', err);
-    authorize(JSON.parse(content), sendEmail());
+    authorize(JSON.parse(content), sendEmail);
 });
 
 function authorize(credentials, callback) {
@@ -58,31 +50,42 @@ function getAccessToken(oAuth2Client, callback) {
     });
 }
 
+// Function to send the email
 function sendEmail(auth) {
-    const gmail = google.gmail({ version: 'v1', auth });
-    const email = createEmail();
-    const encodedEmail = Buffer.from(email).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    // Read the content from email.txt
+    fs.readFile(EMAIL_FILE_PATH, 'utf8', (err, emailText) => {
+        if (err) {
+            console.error('Error reading email.txt:', err);
+            return;
+        }
 
-    gmail.users.messages.send({
-        userId: 'me',
-        resource: { raw: encodedEmail },
-    }, (err, res) => {
-        if (err) return console.log('The API returned an error: ' + err);
-        console.log('Email sent:', res.data);
+        // Now that we have the content from email.txt, send the email
+        const gmail = google.gmail({ version: 'v1', auth });
+        const email = createEmail(emailText);  // Pass the content of email.txt to createEmail function
+        const encodedEmail = Buffer.from(email).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+
+        gmail.users.messages.send({
+            userId: 'me',
+            resource: { raw: encodedEmail },
+        }, (err, res) => {
+            if (err) return console.log('The API returned an error: ' + err);
+            console.log('Email sent:', res.data);
+        });
     });
 }
 
+// Function to create the email body
 function createEmail(emailText) {
     return [
         'From: "Your Name" <your-email@gmail.com>',
         'To: recipient@example.com',
-        'Subject: Test Email from Node.js',
+        'Subject: Email with content from email.txt',
         'Content-Type: text/plain; charset=utf-8',
         '',
-        emailText
+        emailText  // Attach the content read from email.txt
     ].join('\n');
 }
 
-app.listen(3000, () => {
-    console.log('Server started on http://localhost:3000');
+app.listen(3001, () => {
+    console.log('Server started on http://localhost:3001');
 });
