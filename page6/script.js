@@ -1,39 +1,44 @@
 // Sample JSON data
 const alumniData = [
     {
-        "name": "John Doe",
-        "role": "Senior Consultant",
-        "company": "ABC Corp",
-        "interests": ["Networking", "Consulting", "Finance"],
+        "name": "Hao Mack Yang L.",
+        "role": "Fullstack Developer",
+        "company": "Qiskit",
+        "interests": ["Quantum Computing", "Freelance", "Math/Physics Teacher"],
         "experience": "3-5 years"
+        "email": "hao.mack.yang@gmail.com"
     },
     {
-        "name": "Jane Smith",
-        "role": "Project Manager",
-        "company": "XYZ Ltd",
-        "interests": ["Leadership", "Consulting", "Marketing"],
-        "experience": "5-10 years"
+        "name": "Birks Sachdev",
+        "role": "Software Engineer",
+        "company": "Salesforce",
+        "interests": ["Entreprenuership", "Management", "Technology"],
+        "experience": "2-3 years"
+        "email": "bsachdev10@gmail.com"
     },
     {
-        "name": "Michael Brown",
-        "role": "Data Analyst",
-        "company": "DataTech",
-        "interests": ["Analytics", "Big Data", "Finance"],
+        "name": "Dimple Bhanushali",
+        "role": "Director of Operations",
+        "company": "Freelance",
+        "interests": ["Supply Chain Scientice", "Finance", "Sustainability"],
         "experience": "1-3 years"
+        "email": "dimplebhanushali224@gmail.com"
     },
     {
-        "name": "Jane Smith",
-        "role": "Project Manager",
-        "company": "XYZ Ltd",
-        "interests": ["Leadership", "Consulting", "Marketing"],
+        "name": "Nifasath A",
+        "role": "Software Engineer",
+        "company": "Agilent",
+        "interests": ["Early-stage Ventures", "AI", "Technology"],
         "experience": "5-10 years"
+        "email": "nifasathsa@gmail.com"
     },
     {
-        "name": "Jane Smith",
-        "role": "Project Manager",
-        "company": "XYZ Ltd",
-        "interests": ["Leadership", "Consulting", "Marketing"],
-        "experience": "5-10 years"
+        "name": "Twinkle Mohan",
+        "role": "Project Designer",
+        "company": "Freedom Mortgage",
+        "interests": ["Branding", "Products", "Designs"],
+        "experience": "4-5 years"
+        "email": "twinkle18mohan@gmail.com"
     },
 ];
 
