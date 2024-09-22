@@ -84,12 +84,11 @@ You are specializing in professional communication, tasked with composing a netw
 - **Frameworks & Libraries:**
   - **Python:** For backend development and machine learning tasks.
   - **MongoDB:** As our primary database for managing user data.
-  - **Tune:** Utilized for fine-tuning our LLaMA model.
-  - **React:** (If applicable) For building a responsive and interactive frontend.
+  - **Tune:** Utilized for fine-tuning our LLaMA3 model.
 
 - **External/Open Source Resources:**
   - **LLaMA Model:** Leveraged for generating personalized emails.
-  - **Various Python Libraries:** Including NumPy, Pandas, and TensorFlow for data processing and model training.
+  - **Various Python Libraries:** Including Pandas for data processing and model training.
 
 ---
 
