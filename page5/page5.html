@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Agent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body {
+            font-family: 'Figtree', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #003366, #47a6a8);
+            color: white;
+        }
+
+        .container {
+            text-align: left;
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            position: relative;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1.5rem;
+            border: none;
+            border-bottom: 2px solid white;
+            background: none;
+            color: white;
+            margin-bottom: 30px;
+            outline: none;
+            transition: border-bottom 0.3s ease-in-out;
+            font-style: italic;
+        }
+
+        input:focus {
+            border-bottom: 2px solid #00c2ff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: flex-start; /* Align the button to the left */
+            width: 100%;
+        }
+
+        .submit-button {
+            background: none;
+            border: 2px solid white;
+            border-radius: 50%;
+            padding: 15px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+        }
+
+        .submit-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+            font-size: 24px;
+        }
+
+        .fade {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .fade-active {
+            opacity: 1;
+        }
+
+        .logo {
+            position: absolute;
+            bottom: 100px;
+            height: auto;
+            right: 20px;
+            opacity: 0.8;
+        }
+
+        .logo img {
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Your personalized agent is on the way.</h2>
+        <p id="questionText">What are your interests?</p>
+        <input type="text" id="answerInput" placeholder="Finance" />
+        
+        <!-- Button aligned to the left inside a container -->
+        <div class="button-container">
+            <div class="submit-button" onclick="submitAnswer()">
+                <span class="material-symbols-outlined">arrow_forward_ios</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="logo">
+        <img src="/Pictures/nyu.png" alt="NYU Logo">
+    </div>
+
+    <script>
+        const questions = [
+            "What are your interests?",
+            "What jobs are you looking for?",
+            "Where are you located?"
+        ];
+        let currentQuestionIndex = 0;
+
+        const questionText = document.getElementById('questionText');
+        const answerInput = document.getElementById('answerInput');
+
+        function submitAnswer() {
+            // Get the current answer (you can store it or process it as needed)
+            const answer = answerInput.value;
+
+            // Proceed to the next question
+            currentQuestionIndex++;
+
+            // If we still have more questions
+            if (currentQuestionIndex < questions.length) {
+                changeQuestion(questions[currentQuestionIndex]);
+            } else {
+                // When all questions are answered
+                alert('Thank you for your answers!');
+                // Redirect or perform other actions here
+            }
+
+            // Clear the input field
+            answerInput.value = '';
+        }
+
+        function changeQuestion(newQuestion) {
+            // Fade out
+            questionText.classList.add('fade');
+            setTimeout(() => {
+                // Update the text after the fade out
+                questionText.textContent = newQuestion;
+                questionText.classList.remove('fade');
+                questionText.classList.add('fade-active');
+            }, 500); // Matches the CSS transition duration
+        }
+    </script>
+
+</body>
+</html>
