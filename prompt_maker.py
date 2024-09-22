@@ -127,7 +127,7 @@ with open('saveDeets.js', 'r') as file:
      for line in file:
           deets.append(line.strip())
 
-area_of_interest = deets[1]
+area_of_interest = deets[0]
 
 form_data = []
 

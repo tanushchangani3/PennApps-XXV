@@ -138,7 +138,7 @@
             "Investment Banking",
             "Philadelphia, PA",
             "",
-        ]
+        ];
         let currentQuestionIndex = 0;
 
         const questionText = document.getElementById('questionText');
@@ -147,14 +147,14 @@
 
         submitButton.addEventListener('click', (event) => {
             event.preventDefault();
-            // Get the current answer (you can store it or process it as needed)
             const answer = answerInput.value;
 
-            // Proceed to the next question
-            currentQuestionIndex++;
+            if (answer.trim() === '') {
+                console.error('Answer is required');
+                return; // Prevent submitting empty answers
+            }
 
             if (currentQuestionIndex < questions.length) {
-                // Send form data to the server via fetch
                 fetch('http://localhost:3005/save-deets', {
                     method: 'POST',
                     headers: {
@@ -167,36 +167,33 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log(data.message);
+
+                    // Move to the next question after saving data
+                    console.log(currentQuestionIndex)
+                    currentQuestionIndex++;
+                    if (currentQuestionIndex < questions.length) {
+                        changeQuestion(questions[currentQuestionIndex], placeHolders[currentQuestionIndex]);
+                    } else {
+                        window.location.href = "/page6/page6.html";
+                    }
                 })
                 .catch(error => {
                     console.error('Error:', error);
                 });
 
-                // If we still have more questions
-                changeQuestion(questions[currentQuestionIndex], placeHolders[currentQuestionIndex]);
-
-            } else {
-                // When all questions are answered
+                // Clear the input field
+                answerInput.value = '';
                 window.location.href = "/page6/page6.html";
-                // Redirect or perform other actions here
             }
-
-            // Clear the input field
-            answerInput.value = '';
         });
 
         function changeQuestion(newQuestion, newPlaceholder) {
-            // Fade out
             questionText.classList.add('fade');
             setTimeout(() => {
-                // Update the text after the fade out
                 questionText.textContent = newQuestion;
                 questionText.classList.remove('fade');
-                questionText.classList.add('fade-active');
-
-                answerInput.placeholder = newPlaceholder
-
-            }, 500); // Matches the CSS transition duration
+                answerInput.placeholder = newPlaceholder;
+            }, 500); 
         }
     </script>
 
