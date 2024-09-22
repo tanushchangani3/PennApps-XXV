@@ -6,6 +6,8 @@ const path = require('path');
 
 const CREDENTIALS_PATH = path.join(__dirname, 'credentials.json');
 const TOKEN_PATH = path.join(__dirname, 'token.json');
+const EMAIL_FILE_PATH = path.join(__dirname, 'email.txt'); // Path to email.txt
+const EMAIL_ADDRESS_FILE_PATH = path.join(__dirname, 'emailAddress.txt');
 
 const SCOPES = ['https://www.googleapis.com/auth/gmail.send'];
 
@@ -49,31 +51,52 @@ function getAccessToken(oAuth2Client, callback) {
     });
 }
 
+// Function to send the email
 function sendEmail(auth) {
-    const gmail = google.gmail({ version: 'v1', auth });
-    const email = createEmail();
-    const encodedEmail = Buffer.from(email).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    // Read the content from email.txt
+    fs.readFile(EMAIL_FILE_PATH, 'utf8', (err, emailText) => {
+        if (err) {
+            console.error('Error reading email.txt:', err);
+            return;
+        }
+    
+        fs.readFile(EMAIL_ADDRESS_FILE_PATH, 'utf8', (err, emailAddress) => {
+            if (err) {
+                console.error('Error reading emailAddress.txt:', err);
+                return;
+            }
 
-    gmail.users.messages.send({
-        userId: 'me',
-        resource: { raw: encodedEmail },
-    }, (err, res) => {
-        if (err) return console.log('The API returned an error: ' + err);
-        console.log('Email sent:', res.data);
+            let data = emailAddress.split("\n");
+            const trimmedLinesArray = data.map(line => line.trim());
+
+            // Now that we have the content from email.txt, send the email
+            const gmail = google.gmail({ version: 'v1', auth });
+            const email = createEmail(emailText, trimmedLinesArray[0]);  // Pass emailAddress to createEmail function
+            const encodedEmail = Buffer.from(email).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+
+            gmail.users.messages.send({
+                userId: 'me',
+                resource: { raw: encodedEmail },
+            }, (err, res) => {
+                if (err) return console.log('The API returned an error: ' + err);
+                console.log('Email sent:', res.data);
+            });
+        });
     });
 }
 
-function createEmail() {
+// Function to create the email body
+function createEmail(emailText, emailAddress) {
     return [
         'From: "Your Name" <your-email@gmail.com>',
-        'To: recipient@example.com',
-        'Subject: Test Email from Node.js',
+        'To: ' + emailAddress,
+        'Subject: Email with content from email.txt',
         'Content-Type: text/plain; charset=utf-8',
         '',
-        'Hello,\n\nThis is a test email sent from a Node.js app using the Gmail API.'
+        emailText  // Attach the content read from email.txt
     ].join('\n');
 }
 
-app.listen(3000, () => {
-    console.log('Server started on http://localhost:3000');
+app.listen(3001, () => {
+    console.log('Server started on http://localhost:3001');
 });
