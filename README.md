@@ -26,7 +26,7 @@ CoffeeStarter leverages the power of a fine-tuned **LLaMA** model to craft **per
 
 Our robust technology stack ensures reliability and scalability:
 
-- **🗄️ Database:** Powered by **MongoDB** for flexible and efficient data management.
+- **🗄️ Database:** Powered by **SQLite** for flexible and efficient data management.
 - **🐍 Machine Learning:** Developed using **Python** to handle complex ML tasks with precision.
 - **⚙️ Fine-Tuning:** Employed **Tune** for meticulous model fine-tuning, ensuring optimal performance and personalization.
 
@@ -36,10 +36,11 @@ Our robust technology stack ensures reliability and scalability:
 
 Building CoffeeStarter wasn't without its hurdles:
 
-- **🔒 MongoDB Integration:** Navigating the complexities of MongoDB required innovative solutions.
+- **🔒 SQLite Integration:** Navigating the complexities of SQLite required innovative solutions.
 - **🚧 Firewall Obstacles:** Overcoming persistent firewall issues to maintain seamless connectivity.
 - **📉 Model Overfitting:** Balancing the model to avoid overfitting while ensuring high personalization.
 - **🌐 Diverse Dataset Creation:** Ensuring a rich and varied dataset to support effective networking outcomes.
+- ** API Integration:** Working with various API's to get as diverse a dataset and functionality as possible.
 
 ---
 
@@ -86,7 +87,7 @@ You are specializing in professional communication, tasked with composing a netw
 
 - **Frameworks & Libraries:**
   - **Python:** For backend development and machine learning tasks.
-  - **MongoDB:** As our primary database for managing user data.
+  - **SQLite:** As our primary database for managing user data.
   - **Tune:** Utilized for fine-tuning our LLaMA3 model.
 
 - **External/Open Source Resources:**
