@@ -40,7 +40,7 @@ Building CoffeeStarter wasn't without its hurdles:
 - **🚧 Firewall Obstacles:** Overcoming persistent firewall issues to maintain seamless connectivity.
 - **📉 Model Overfitting:** Balancing the model to avoid overfitting while ensuring high personalization.
 - **🌐 Diverse Dataset Creation:** Ensuring a rich and varied dataset to support effective networking outcomes.
-- ** API Integration:** Working with various API's to get as diverse a dataset and functionality as possible.
+- **API Integration:** Working with various API's to get as diverse a dataset and functionality as possible.
 
 ---
 
