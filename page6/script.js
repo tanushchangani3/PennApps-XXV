@@ -17,7 +17,6 @@ const alumniData = [
         "experience": "2-3 years",
         "email": "example@example.com",
         "LinkedIn": "birks-sachdev"
-
     },
     {
         "name": "Dimple Bhanushali",
