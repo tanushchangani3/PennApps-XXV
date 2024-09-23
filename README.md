@@ -97,3 +97,13 @@ You are specializing in professional communication, tasked with composing a netw
 - **External/Open Source Resources:**
   - **LLaMA Model:** Leveraged for generating personalized emails.
   - **Various Python Libraries:** Including Pandas for data processing and model training.
+ 
+## Notes on running our application
+node emailMiddle.js
+node UserDataTransfer.js
+node saveDeets.js
+node uniSave.js
+node savePDF.js
+
+Run page1.html
+
