@@ -99,11 +99,10 @@ You are specializing in professional communication, tasked with composing a netw
   - **Various Python Libraries:** Including Pandas for data processing and model training.
  
 ## Notes on running our application
-node emailMiddle.js
-node UserDataTransfer.js
-node saveDeets.js
-node uniSave.js
-node savePDF.js
-
-Run page1.html
+1. node emailMiddle.js
+2. node UserDataTransfer.js
+3. node saveDeets.js
+4. node uniSave.js
+5. node savePDF.js
+6. Run page1.html
 
